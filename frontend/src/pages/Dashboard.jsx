@@ -62,7 +62,7 @@ const Dashboard = () => {
 
   // Socket connection
   useEffect(() => {
-    const tempSocket = io("http://localhost:3000/", { withCredentials: true });
+    const tempSocket = io("https://chatmate-lkzj.onrender.com", { withCredentials: true });
     setSocket(tempSocket);
     return () => tempSocket.disconnect();
   }, []);
