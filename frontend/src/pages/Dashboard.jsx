@@ -13,6 +13,7 @@ import { asyncLoadPresets } from "../store/actions/contextAction";
 import { DEFAULT_PRESETS } from "../store/reducers/contextSlice";
 import { io } from "socket.io-client";
 import axios from "../api/axiosconfig";
+import backendUrl from "../api/backendUrl";
 import PresetCardGrid from "../components/PresetCardGrid";
 import UploadContextCard from "../components/UploadContextCard";
 
@@ -62,7 +63,7 @@ const Dashboard = () => {
 
   // Socket connection
   useEffect(() => {
-    const tempSocket = io("https://chatmate-lkzj.onrender.com", { withCredentials: true });
+    const tempSocket = io(backendUrl, { withCredentials: true });
     setSocket(tempSocket);
     return () => tempSocket.disconnect();
   }, []);

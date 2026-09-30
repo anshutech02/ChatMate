@@ -7,15 +7,15 @@ const aiService = require("../services/ai.service");
 const messageModel = require("../models/message.model");
 const { createMemory, queryMemory } = require("../services/vector.service");
 const { buildSystemPrompt } = require("../services/context.service");
+const corsOptions = require("../corsOptions");
 
 
 function initSocketServer(httpServer) {
 
     const io = new Server(httpServer, {
         cors: {
-            origin: "http://localhost:5173",
+            ...corsOptions,
             methods: ["GET", "POST"],
-            credentials: true
         }
     });
 

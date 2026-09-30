@@ -8,27 +8,11 @@ const authRoutes = require('./routes/auth.routes');
 const chatRoutes = require("./routes/chat.routes");
 const messageRoutes = require('./routes/message.routes');
 const contextRoutes = require('./routes/context.routes');
+const corsOptions = require('./corsOptions');
 
 
 const app = express();
-const allowedOrigins = new Set([
-  'http://localhost:5173',
-  ...(process.env.FRONTEND_URL || '')
-    .split(',')
-    .map((origin) => origin.trim())
-    .filter(Boolean),
-]);
-
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.has(origin)) {
-      return callback(null, true);
-    }
-
-    return callback(new Error(`Origin ${origin} is not allowed by CORS`));
-  },
-  credentials: true,
-}));
+app.use(cors(corsOptions));
 
 
 /* using middlewares */

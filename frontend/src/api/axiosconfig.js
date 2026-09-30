@@ -1,9 +1,9 @@
 import axios from "axios"
+import backendUrl from "./backendUrl"
 
 const instance = axios.create({
-    baseURL : "https://chatmate-lkzj.onrender.com",
+    baseURL: backendUrl,
     withCredentials: true
 })
 
 export default instance;
-//"http://localhost:3000/"
